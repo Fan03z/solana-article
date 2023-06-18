@@ -15,7 +15,7 @@ pub mod solana_global_article {
     Ok(())
   }
 
-  pub fn write_into_article(ctx: Context<Initialize>, three_words: String) -> Result<()> {
+  pub fn write_into_article(ctx: Context<WriteIntoArticle>, three_words: String) -> Result<()> {
     // To update the article string
     let article = &mut ctx.accounts.article;
     let split_iterator = three_words.trim().split(" ");
@@ -37,7 +37,7 @@ pub mod solana_global_article {
     }
 
     // Join the 3 words after removing spaces
-    let mut joined_words = final_words.join("");
+    let mut joined_words = final_words.join(" ");
     // Add a space at the end with this
     joined_words.push_str(" ");
     // Article content gets immediately updated
